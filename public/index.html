@@ -225,6 +225,7 @@
       .removeerror {
         display: none;
       }
+
       /*===small screen===*/
       @media  (max-width:896px) {
         .sectors {
@@ -363,12 +364,9 @@
       //if checkbox is checked
       const handleChecked = (e) => {
       if(e.target.checked) {
-        return setCheck(true);
-        } else {
-          return setCheck(false)
-        }
+        setCheck(true);
       }
-
+     }
       //handling validation
       const isValidated = () => {
         let isProceed = true;
@@ -382,7 +380,6 @@
           setErrors(errorMessage);
         }
         return isProceed;
-        alert("form submitted");
         
       } 
 
@@ -439,7 +436,7 @@
       
       const handleUserInput = (data) => {
         let item = data
-        console.warn("function called", data);
+       // console.warn("function called", data);
             setUserID(item.id);
             setSavedName(item.nameInput);
             setSavedSector(item.selectedIndex);
@@ -447,8 +444,6 @@
             //console.log("from function", data);   
       }
       
-
-
        //Editing a user and a sector
       const handleEdit = (userid) => {
         setEditID(userid)
@@ -457,7 +452,7 @@
       //Updating a user and a sector
       const handleUpdate = () => {
         let updateItem = {savedName, savedSector, savedCheck}
-        console.warn(updateItem);
+        // console.warn(updateItem);
         fetch(`http://localhost:3000/allPosts/${userid}`, {
           method: "PUT",
           headers: {"Content-type": "application/json"},
