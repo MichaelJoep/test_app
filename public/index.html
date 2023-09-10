@@ -2,42 +2,623 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <title>Test Task Webpage</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+      body{
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #eee;
+      }
+      .container {
+        max-width: 60rem;
+        height: 555px;
+        margin: 5rem auto;
+        box-shadow: 1px 0 5px rgba(0, 0, 0, 0.4);
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px 20px;
+      }
+      .items {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+      }
+      .items .input_items {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 25px;
+      }
+      .items p {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+      }
+      .items input{
+        border: none;
+        outline: none;
+        border: 2px solid #f5ebeb;
+        border-radius: 5px;
+        background: transparent;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+        color: rgba(34, 34, 96, 0.9);
+        font-size: 14px;
+        font-family: inherit;
+        padding: .9rem;
+        width: 60%;
+      }
+
+      .sectors {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        margin: 2.5rem;
+        max-width: 100%;
+      }
+     
+      .list_container {
+        outline: none;
+        border: 2px solid #f5ebeb;
+        width: 15rem;
+        border-radius: 5px;
+        background: transparent;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+        color: rgba(34, 34, 96, 0.9);
+        line-height: 1.3rem;
+        padding-top: 8px;
+        overflow: hidden;
+        overflow-y: scroll;
+        height: 186px;
+      }
+
+      .sector_input input {
+        margin-bottom: -5rem;
+        border: none;
+        outline: none;
+        border: 2px solid #f5ebeb;
+        border-radius: 5px;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+        color: rgba(34, 34, 96, 0.9);
+        font-family: inherit;
+        width: 15.8rem;
+        padding: 0.8rem;
+        background: transparent;
+      }
+
+      .left_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5rem;
+      }
+      .right_container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .right_container .form_group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 19rem;
+      }
+      .right_container .form_group input {
+        border: none;
+        outline: none;
+        border: 2px solid #f5ebeb;
+        border-radius: 5px;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+        color: rgba(34, 34, 96, 0.9);
+        font-family: inherit;
+        padding: 0.8rem;
+        width: 100%;
+      }
+     
+      ul, li {
+        list-style: none;
+        cursor: pointer;
+        
+      }
+      
+      .child_container {
+        font-size: 12px;
+      }
+      .child_container .children:hover {
+        color: #fff;
+        background: #7c899a;
+      }
+
+      .terms {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 12px;
+        padding: 0 25px;
+        margin-top: 1rem;
+      }
+      
+      .right_container .edit_item{
+        background-color: rgb(9, 68, 124);
+        color: #fff;
+        padding: 0.8rem 6rem;
+        border-radius: 3px;
+        cursor: pointer;
+        border: none;
+        margin-left: 2rem;
+      }
+      
+      .right_container .edit_item:hover{
+        opacity: 0.5;
+      }
+
+      .right_container .update_item {
+        background-color: rgb(31, 4, 77);
+        color: #fff;
+        font-weight: 700;
+        padding: 0.8rem 6rem;
+        border-radius: 3px;
+        cursor: pointer;
+        border: none;
+        margin-left: 2rem;
+      }
+      .right_container .update_item:hover{
+        opacity: 0.5;
+      }
+     a{
+        text-decoration: none;
+      }
+           
+      .subBtn {
+        width: 4rem;
+        padding: 5px;
+        font-size: 1rem;
+        border: none;
+        background-color: #453c5d;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 1px 0 5px rgba(0, 0, 0, 0.4);
+        margin-top: 1rem;
+      }
+      
+      button:hover {
+        background-color: #7c899a;
+      }
+      .block {
+        display: block;
+      }
+      .hidden {
+        display: none;
+      }
+      .green {
+        color: green;
+      }
+      .error{
+        background-color: #f8d7da;
+        color: #df4759;
+        padding: 0.5rem;
+        width: 15rem;
+        border-radius: 0.3rem;
+        margin-top: -2rem;
+        text-align: center;
+        margin-left: 11rem;
+      }
+      .selectedItem {
+        color: #fff;
+        background: #7c899a;
+      }
+      .removeerror {
+        display: none;
+      }
+      /*===small screen===*/
+      @media  (max-width:896px) {
+        .sectors {
+          gap: 2rem;
+          max-width: 50%;
+      }
+      .left_container {
+        gap: 2rem;
+      }
+      .list_container {
+          width: 12rem;
+          height: 186px;
+      }
+      .sector_input input {
+          width: 12.8rem;
+      }
+      .right_container .form_group input {
+          width: 80%;
+          gap: 2px;
+      }
+      .right_container .edit_item {
+          padding: 0.5rem 4rem;
+          margin-left: 2px;
+          margin-top: -1rem;
+      }
+      .right_container .update_item {
+          padding: 0.5rem 4rem;
+          margin-left: 2px;
+          margin-top: -1rem;
+      }
+
+      }
+
+      @media (max-width:700px) {
+        .container {
+          height: 800px;
+          padding: 10px 10px;
+      }
+      .sectors {
+          gap: 1rem;
+          max-width: 100%;
+          align-items: center;
+          flex-direction: column;
+      }
+      .right_container .form_group input {
+          width: 100%;
+          gap: 2px;
+      }
+      .list_container {
+          width: 15rem;
+          height: 186px;
+      }
+      .sector_input input {
+          width: 15.8rem;
+       }
+      }
+      @media (max-width:384px){
+        .container {
+          padding: 10px 20px;
+       }
+      .left_container {
+          gap: 1rem;
+       }
+       .list_container {
+          width: 13rem;
+        }
+        .sector_input input {
+            width: 13.8rem;
+        }
+        .right_container .form_group input {
+            width: 95%;
+            gap: 1.4px;
+        }
+        .error{
+        width: 14rem;
+        margin-top: -1.8rem;
+        margin-left: 4.9rem;
+      }
+      }
+      @media (max-width:323px) {
+        .list_container {
+          width: 10rem;
+        }
+        .sector_input input {
+            width: 10.8rem;
+        }
+        .right_container .form_group input {
+            width: 80%;
+        }
+        
+      }
+    </style>
+    </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    
+                                                  
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <script type="text/babel">
+    
+    const DataSector = () => {
+      const [sectFile, setSectFile] = React.useState([]);
+      const [selectedIndex, setSelectedIndex] = React.useState(0);
+      const [nameInput, setNameInput] = React.useState("");
+      const [selectSector, setSelectSector] = React.useState('');
+      const [check, setCheck] = React.useState(false);
+      const [savedName, setSavedName] = React.useState("");
+      const [savedSector, setSavedSector] = React.useState("");
+      const [savedCheck, setSavedCheck] = React.useState(true);
+      const [userid, setUserID] = React.useState("");
+      const [searchInput, setSearchInput] = React.useState('');
+      const [errors, setErrors] = React.useState("");
+      const [editID, setEditID] = React.useState(-1);
+     
+      
+      
+      //fetch all sectors from database
+      const getData = () => {
+        fetch('http://localhost:3000/allSectors', {
+          method: 'GET',
+          headers: {'Content-type': 'application/json'},
+        }).then((response) => {
+          response.json().then(data => {
+            setSectFile(data);
+            console.log("result", data);
+          })
+        })
+      }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+     //show selected sector
+      const handleSelect = (index) => {
+        setSelectedIndex(index);
+        console.log(index)
+      }
+
+      //if checkbox is checked
+      const handleChecked = (e) => {
+      if(e.target.checked) {
+        return setCheck(true);
+        } else {
+          return setCheck(false)
+        }
+      }
+
+      //handling validation
+      const isValidated = () => {
+        let isProceed = true;
+        let errorMessage = "Please all fields are mandatory!"
+        if(nameInput === "" || selectedIndex === 0 || check === false) {
+
+          isProceed = false;
+          setErrors(errorMessage);
+        } 
+        if(!isProceed) {
+          setErrors(errorMessage);
+        }
+        return isProceed;
+        alert("form submitted");
+        
+      } 
+
+     
+
+      //Click button to Post a user and sector
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        //POST data
+        if(isValidated()){
+          const id = new Date().getTime().toString();
+        fetch('http://localhost:3000/allPosts', {
+          method: 'POST',
+           headers: {'Content-type':'application/json'},
+           body: JSON.stringify({
+            nameInput,
+            check,
+            selectedIndex,
+            id: id
+         })
+        }).then(response => {
+          response.json().then(data => {
+            setNameInput('');
+            setSelectedIndex('');
+            setCheck(false);
+            handleUserInput(data);
+            alert("Submitted successfully!");
+            // console.log('result', data);
+          })
+         }).catch((err) => {
+          throw new err;
+         }) 
+        }
+      }
+
+     
+      //fetchSinglePost
+      const fetchSinglePost = async () => {
+        await fetch("http://localhost:3000/allPosts", {
+          method: "GET",
+          headers: {'Content-type': 'application/json'},
+        }).then((response)=> {
+          response.json().then(userData => {
+            setSavedName(userData[0].nameInput);
+            setSavedSector(userData[0].selectedIndex);
+            setSavedCheck(userData[0].check);
+            setUserID(userData[0].id);
+          })
+        }).catch((err) => {
+          console.log(err);
+        })
+      }
+      
+      
+      const handleUserInput = (data) => {
+        let item = data
+        console.warn("function called", data);
+            setUserID(item.id);
+            setSavedName(item.nameInput);
+            setSavedSector(item.selectedIndex);
+            setSavedCheck(item.check);
+            //console.log("from function", data);   
+      }
+      
+
+
+       //Editing a user and a sector
+      const handleEdit = (userid) => {
+        setEditID(userid)
+      }
+
+      //Updating a user and a sector
+      const handleUpdate = () => {
+        let updateItem = {savedName, savedSector, savedCheck}
+        console.warn(updateItem);
+        fetch(`http://localhost:3000/allPosts/${userid}`, {
+          method: "PUT",
+          headers: {"Content-type": "application/json"},
+          body: JSON.stringify(updateItem)
+        }).then((response)=> {
+          response.json().then((result) => {
+            fetchSinglePost();
+            console.log("data: ",result);
+            if(result){
+              window.location.reload();
+            }
+          })
+        }).catch((error) => {
+          return error
+        })
+        
+      }
+
+
+      React.useEffect(() => {
+        getData();
+        fetchSinglePost();
+        
+        
+      },[]);
+     
+      return (
+        
+      <div className="container">
+         
+        <div className="items">
+          <p>Please enter your name and pick the Sectors you are currently involved in.</p>
+             
+              <div className="input_items">
+                <label htmlFor="nameInput">Name:</label>
+                 <input 
+                 type="text" 
+                 id="nameInput" 
+                 name="nameInput" 
+                 value={nameInput}
+                 placeholder="Enter your Full Name..." 
+                 onChange={(e)=> setNameInput(e.target.value)}/> 
+            </div>
+          </div>
+          <div className="sectors">
+            <div className="left_container">
+              <label htmlFor="sect">Sectors:</label>
+              <div className="sector_group">
+                 <div className="sector_input">
+                    <input type="text" 
+                    name="searchInput"
+                    value={searchInput}  
+                    placeholder="Search for a sector..."
+                    onChange={e => setSearchInput(e.target.value.toLowerCase())}/>
+                  </div>  
+                <ul id="sect" className="list_container" >
+                  {sectFile &&  sectFile.map((sectItems, index) => {
+                    return (
+                      <li className="parent" 
+                       key={index} name={sectItems.sector}>
+                          {sectItems.sector}
+                           <ul className="child_container">
+                            { sectItems.detail && sectItems.detail.map((childItems, index) => {
+                                return (
+                                    <li className={`children ${childItems.dept.toLowerCase().startsWith(searchInput) ? 'block' : "hidden"}
+                                   ${ childItems.dept === selectedIndex ? "selectedItem" : ""}`} 
+                                  key={index} name={childItems.dept} 
+                                onClick={()=>handleSelect(childItems.dept)}>
+                               {childItems.dept}
+                            </li>)
+                          })}
+                      </ul>
+                    </li>
+                    )
+                  })}
+                  
+              </ul>
+           </div>
+          </div>
+              
+               <div className="right_container">
+                { userid.id === editID ? (
+                 <>
+                  <form className="form_group">
+                  
+                    <input 
+                            type="text"  
+                            value={userid} 
+                            disabled
+                            readOnly
+                            />
+                    <input 
+                            type="text" 
+                            value={savedName} 
+                            onChange={(e)=>setSavedName(e.target.value)}
+                            />
+                    <input 
+                            type="text" 
+                            value={savedSector}
+                            onChange={(e)=>setSavedSector(e.target.value)}
+                            />  
+                    <input 
+                            type="text" 
+                            value={savedCheck} 
+                            disabled
+                            readOnly
+                            /> 
+                  </form>
+                  <button className="update_item" onClick={handleUpdate}>UPDATE</button>
+                    </> 
+                    ) : (
+                  
+                    <>
+                  <form className="form_group">
+                  
+                    <input 
+                            type="text"  
+                            value={userid} 
+                            disabled  
+                            readOnly                          
+                            />
+                    <input 
+                            type="text" 
+                            value={savedName}  
+                            readOnly                     
+                            />
+                    <input 
+                            type="text" 
+                            value={savedSector} 
+                            readOnly  
+                            />  
+                    <input 
+                            type="text" 
+                            value={savedCheck} 
+                            disabled
+                            readOnly
+                            /> 
+                   </form>
+                      <button className="edit_item" onClick={()=>handleEdit(userid.id)}>EDIT</button>
+                    </>
+                    )}
+               </div>
+           </div>
+          
+          <div className="terms">
+                <input 
+                id ="check"
+                type="checkbox" 
+                name="check"  
+                onChange={handleChecked}/> 
+                <label htmlFor="check">Agree to terms and condition!</label>
+          </div>
+            <button type="submit"  className="subBtn" onClick={handleSubmit}>Save</button>
+          {!!errors && <div className="error">{`${errors}`}</div> }
+      </div>
+      
+      )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<DataSector />)
+  </script>
   </body>
 </html>

@@ -1,0 +1,528 @@
+{
+  "allSectors": [
+    {
+      "id": 0,
+      "sector": "Manufacturing",
+      "detail": [
+        {
+          "id": 2,
+          "dept": "Construction material"
+        },
+        {
+          "id": 3,
+          "dept": "Electronics and Optics"
+        }
+      ]
+    },
+    {
+      "id": 0.1,
+      "sector": "Food and Baverage",
+      "detail": [
+        {
+          "dept": "Bakery & Confectionery Products",
+          "id": 5
+        },
+        {
+          "dept": "Beverages",
+          "id": 6
+        },
+        {
+          "dept": "Fish & Fish products",
+          "id": 7
+        },
+        {
+          "dept": "Milk & dairy products",
+          "id": 8
+        }
+      ]
+    },
+    {
+      "id": 0.2,
+      "sector": "Others",
+      "detail": [
+        {
+          "dept": "Sweets & Snack food",
+          "id": 10
+        }
+      ]
+    },
+    {
+      "id": 0.3,
+      "sector": "Furniture",
+      "detail": [
+        {
+          "dept": "Bathroom / Sauna",
+          "id": 12
+        },
+        {
+          "dept": "Bedroom",
+          "id": 13
+        },
+        {
+          "dept": " Children's room",
+          "id": 14
+        },
+        {
+          "dept": "Kitchen",
+          "id": 15
+        },
+        {
+          "dept": "Living room",
+          "id": 16
+        },
+        {
+          "dept": "Office",
+          "id": 17
+        },
+        {
+          "dept": "Other (furniture)",
+          "id": 18
+        },
+        {
+          "dept": "Outdoor",
+          "id": 19
+        },
+        {
+          "dept": "Project Furniture",
+          "id": 20
+        }
+      ]
+    },
+    {
+      "id": 0.4,
+      "sector": "Machinery",
+      "detail": [
+        {
+          "dept": "Machinery Components",
+          "id": 22
+        },
+        {
+          "dept": "Machinery equipment tools",
+          "id": 23
+        },
+        {
+          "dept": "Manifacture of Machinery",
+          "id": 24
+        }
+      ]
+    },
+    {
+      "id": 0.5,
+      "sector": "Maritime",
+      "detail": [
+        {
+          "dept": "Aluminium and Steel workload",
+          "id": 26
+        },
+        {
+          "dept": "Boat / Yacht building",
+          "id": 27
+        }
+      ]
+    },
+    {
+      "id": 0.6,
+      "sector": "Metal Structure"
+    },
+    {
+      "id": 0.7,
+      "sector": "Other",
+      "detail": [
+        {
+          "dept": "Repair and maintenance service",
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 0.8,
+      "sector": "Metaworking",
+      "detail": [
+        {
+          "dept": "Construction of metal structure",
+          "id": 32
+        },
+        {
+          "dept": "Houses and building",
+          "id": 33
+        },
+        {
+          "dept": "Metal products",
+          "id": 34
+        },
+        {
+          "dept": "Metal work",
+          "id": 35
+        },
+        {
+          "dept": "CNC - machinery",
+          "id": 36
+        },
+        {
+          "dept": "Forgings, Fasteners",
+          "id": 37
+        },
+        {
+          "dept": "Gas, Plasma, Laser cutting",
+          "id": 38
+        },
+        {
+          "dept": "MIG, TIG, Aluminium welding",
+          "id": 39
+        }
+      ]
+    },
+    {
+      "id": 0.9,
+      "sector": "Plastic and Rubber",
+      "detail": [
+        {
+          "dept": "Plastic goods",
+          "id": 40
+        },
+        {
+          "dept": "Plastic processing Technology",
+          "id": 41
+        },
+        {
+          "dept": "Blowing",
+          "id": 42
+        },
+        {
+          "dept": "Moulding",
+          "id": 43
+        },
+        {
+          "dept": "Plastics welding and processing",
+          "id": 44
+        },
+        {
+          "dept": "Plastic profiles",
+          "id": 45
+        }
+      ]
+    },
+    {
+      "id": 0.01,
+      "sector": "Printing",
+      "detail": [
+        {
+          "dept": "Advertising",
+          "id": 47
+        },
+        {
+          "dept": "Book/Periodicals printing",
+          "id": 48
+        },
+        {
+          "dept": "Labelling and package printing",
+          "id": 49
+        }
+      ]
+    },
+    {
+      "id": 0.11,
+      "sector": "Textile and Clothing",
+      "detail": [
+        {
+          "dept": "Clothing",
+          "id": 51
+        },
+        {
+          "dept": "Textile",
+          "id": 52
+        }
+      ]
+    },
+    {
+      "id": 0.12,
+      "sector": "Wood",
+      "detail": [
+        {
+          "dept": "Other (wood)",
+          "id": 54
+        },
+        {
+          "dept": "Wooden building materials",
+          "id": 55
+        },
+        {
+          "dept": "wooden houses",
+          "id": 56
+        }
+      ]
+    },
+    {
+      "id": 0.13,
+      "sector": "Other",
+      "detail": [
+        {
+          "dept": "creative industries",
+          "id": 58
+        },
+        {
+          "dept": "Energy technology",
+          "id": 59
+        },
+        {
+          "dept": "Environment",
+          "id": 60
+        }
+      ]
+    },
+    {
+      "id": 0.14,
+      "sector": "Service",
+      "detail": [
+        {
+          "dept": "Business services",
+          "id": 62
+        }
+      ]
+    },
+    {
+      "id": 0.15,
+      "sector": "Engineering"
+    },
+    {
+      "id": 64,
+      "sector": "Information Technology and Telecommunication",
+      "detail": [
+        {
+          "dept": "Data processing, web portals, E-marketing",
+          "id": 65
+        },
+        {
+          "dept": "Programming, consultancy",
+          "id": 66
+        },
+        {
+          "dept": "Software, Hardware",
+          "id": 67
+        },
+        {
+          "dept": "Telecommunications",
+          "id": 68
+        }
+      ]
+    },
+    {
+      "id": 0.16,
+      "sector": "Tourism"
+    },
+    {
+      "id": 0.17,
+      "sector": "Translation services"
+    },
+    {
+      "id": 0.18,
+      "sector": "Transport and Logistics",
+      "detail": [
+        {
+          "dept": "Air",
+          "id": 72
+        },
+        {
+          "dept": "Rail",
+          "id": 73
+        },
+        {
+          "dept": "Road",
+          "id": 74
+        },
+        {
+          "dept": "Water",
+          "id": 75
+        }
+      ]
+    }
+  ],
+  "allPosts": [
+    {
+      "nameInput": "Baal",
+      "check": true,
+      "selectedIndex": "Fish & Fish products",
+      "id": "1694189330754"
+    },
+    {
+      "nameInput": "Jane",
+      "check": true,
+      "selectedIndex": "Fish & Fish products",
+      "id": "1694189354393"
+    },
+    {
+      "nameInput": "Michael Jonathan",
+      "check": true,
+      "selectedIndex": "Milk & dairy products",
+      "id": "1694189402715"
+    },
+    {
+      "nameInput": "Isaac Jumbo",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694189907179"
+    },
+    {
+      "nameInput": "Melody Mark",
+      "check": true,
+      "selectedIndex": "Milk & dairy products",
+      "id": "1694189935049"
+    },
+    {
+      "nameInput": "Chris",
+      "check": true,
+      "selectedIndex": "Fish & Fish products",
+      "id": "1694204238254"
+    },
+    {
+      "nameInput": "Jerry Eze",
+      "check": true,
+      "selectedIndex": "Fish & Fish products",
+      "id": "1694205318240"
+    },
+    {
+      "nameInput": "Christian",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694235817833"
+    },
+    {
+      "nameInput": "Blessing N",
+      "check": true,
+      "selectedIndex": "Bakery & Confectionery Products",
+      "id": "1694274330801"
+    },
+    {
+      "nameInput": "Cosmos",
+      "check": true,
+      "selectedIndex": "Beverages",
+      "id": "1694274496205"
+    },
+    {
+      "nameInput": "Moses Michelle",
+      "check": true,
+      "selectedIndex": "Electronics and Optics",
+      "id": "1694294325479"
+    },
+    {
+      "nameInput": "Engr Mike Joe",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694294443460"
+    },
+    {
+      "nameInput": "Michael Stonebridge",
+      "check": true,
+      "selectedIndex": "Bakery & Confectionery Products",
+      "id": "1694299628653"
+    },
+    {
+      "nameInput": "Scot",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694299670542"
+    },
+    {
+      "nameInput": "Knox",
+      "check": true,
+      "selectedIndex": "Bakery & Confectionery Products",
+      "id": "1694299683145"
+    },
+    {
+      "nameInput": "Bryant Christie",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694299795904"
+    },
+    {
+      "nameInput": "Scot",
+      "check": true,
+      "selectedIndex": "Electronics and Optics",
+      "id": "1694299990221"
+    },
+    {
+      "nameInput": "Divine David",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694301842197"
+    },
+    {
+      "nameInput": "Mary Ann",
+      "check": true,
+      "selectedIndex": "Fish & Fish products",
+      "id": "1694304609021"
+    },
+    {
+      "nameInput": "Joseph John",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694304691534"
+    },
+    {
+      "nameInput": "Obi John",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694304733188"
+    },
+    {
+      "nameInput": "Morgan Jolly",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694304868945"
+    },
+    {
+      "nameInput": "Maxwell",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694304938713"
+    },
+    {
+      "nameInput": "Lonard",
+      "check": true,
+      "selectedIndex": "Electronics and Optics",
+      "id": "1694305032806"
+    },
+    {
+      "savedName": "Mary Jolly",
+      "savedSector": "Construction material",
+      "savedCheck": true,
+      "id": "1694305510253"
+    },
+    {
+      "savedName": "Michael Stone Bridge",
+      "savedSector": "Construction material",
+      "savedCheck": true,
+      "id": "1694305938528"
+    },
+    {
+      "savedName": "Maxwell Matthew",
+      "savedSector": " Children's room",
+      "savedCheck": true,
+      "id": "1694307461158"
+    },
+    {
+      "savedName": "Great Mikel",
+      "savedSector": "Milk & dairy products",
+      "savedCheck": true,
+      "id": "1694307550135"
+    },
+    {
+      "savedName": "Jane Coker",
+      "savedSector": "Boat / Yacht building",
+      "savedCheck": true,
+      "id": "1694307693759"
+    },
+    {
+      "savedName": "Armstrong Brown",
+      "savedSector": "Fish & Fish products",
+      "savedCheck": true,
+      "id": "1694313272825"
+    },
+    {
+      "savedName": "Joseph John M",
+      "savedSector": "Construction material",
+      "savedCheck": true,
+      "id": "1694314841736"
+    }
+  ]
+}
