@@ -426,7 +426,7 @@
             setSavedSector(userData.getUsers[0].dept);
             setSavedCheck(userData.getUsers[0].check);
             setUserID(userData.getUsers[0]._id);
-            console.log(userData);
+            //console.log(userData);
           })
         }).catch((err) => {
           return err;
@@ -441,16 +441,13 @@
             setSavedName(item.name);
             setSavedSector(item.dept);
             setSavedCheck(item.check);
-            console.log("from function", data);   
+            //console.log("from function", data);   
       }
       
 
-
-
        //Updating a user and a sector
        const handleUpdate = async () => {
-        // let updateItem = {name, dept, check, userid}
-        //console.log(updateItem);
+       
         await fetch(`http://localhost:5000/api/v1/updatePost/${userid}`, {
           method: "PUT",
           headers: {"Content-type": "application/json"},
@@ -462,7 +459,7 @@
           })
         }).then((response)=> {
            return response.json().then(res => {
-            console.log("updated Result: ", res);
+            //console.log("updated Result: ", res);
               if(res) {
                 window.location.reload();
               }
