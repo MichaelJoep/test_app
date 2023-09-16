@@ -328,9 +328,8 @@
     
     const DataSector = () => {
       const [sectFile, setSectFile] = React.useState([]);
-      const [selectedIndex, setSelectedIndex] = React.useState(0);
-      const [nameInput, setNameInput] = React.useState("");
-      const [selectSector, setSelectSector] = React.useState('');
+      const [dept, setDept] = React.useState(0);
+      const [name, setName] = React.useState("");
       const [check, setCheck] = React.useState(false);
       const [savedName, setSavedName] = React.useState("");
       const [savedSector, setSavedSector] = React.useState("");
@@ -343,21 +342,22 @@
       
       
       //fetch all sectors from database
-      const getData = () => {
-        fetch('http://localhost:3700/allSectors', {
+      const getData = async () => {
+        await fetch('http://localhost:5000/api/v1/allSectors', {
           method: 'GET',
           headers: {'Content-type': 'application/json'},
         }).then((response) => {
-          response.json().then(data => {
+            return response.json().then(data => {
             setSectFile(data);
             console.log("result", data);
           })
         })
       }
 
+
      //show selected sector
       const handleSelect = (index) => {
-        setSelectedIndex(index);
+        setDept(index);
         console.log(index)
       }
 
@@ -371,7 +371,7 @@
       const isValidated = () => {
         let isProceed = true;
         let errorMessage = "Please all fields are mandatory!"
-        if(nameInput === "" || selectedIndex === 0 || check === false) {
+        if(name === "" || dept === 0 || check === false) {
 
           isProceed = false;
           setErrors(errorMessage);
@@ -386,31 +386,30 @@
      
 
       //Click button to Post a user and sector
-      const handleSubmit = (event) => {
+      const handleSubmit = async (event) => {
         event.preventDefault();
         //POST data
         if(isValidated()){
-          const id = new Date().getTime().toString();
-        fetch('http://localhost:3700/allPosts', {
+          // const id = new Date().getTime().toString();
+        await fetch('http://localhost:5000/api/v1/posts', {
           method: 'POST',
            headers: {'Content-type':'application/json'},
            body: JSON.stringify({
-            nameInput,
+            name,
             check,
-            selectedIndex,
-            id: id
+            dept
          })
         }).then(response => {
-          response.json().then(data => {
-            setNameInput('');
-            setSelectedIndex('');
+           return response.json().then(data => {
+            setName('');
+            setDept('');
             setCheck(false);
             handleUserInput(data);
             alert("Submitted successfully!");
             // console.log('result', data);
           })
          }).catch((err) => {
-          throw new err;
+          return err;
          }) 
         }
       }
@@ -418,59 +417,71 @@
      
       //fetchSinglePost
       const fetchSinglePost = async () => {
-        await fetch("http://localhost:3700/allPosts", {
+        await fetch(`http://localhost:5000/api/v1/getAllUsers`, {
           method: "GET",
           headers: {'Content-type': 'application/json'},
         }).then((response)=> {
-          response.json().then(userData => {
-            setSavedName(userData[0].nameInput);
-            setSavedSector(userData[0].selectedIndex);
-            setSavedCheck(userData[0].check);
-            setUserID(userData[0].id);
+           return response.json().then(userData => {
+            setSavedName(userData.getUsers[0].name);
+            setSavedSector(userData.getUsers[0].dept);
+            setSavedCheck(userData.getUsers[0].check);
+            setUserID(userData.getUsers[0]._id);
+            console.log(userData);
           })
         }).catch((err) => {
-          console.log(err);
+          return err;
         })
       }
       
       
       const handleUserInput = (data) => {
         let item = data
-       // console.warn("function called", data);
-            setUserID(item.id);
-            setSavedName(item.nameInput);
-            setSavedSector(item.selectedIndex);
+        //console.warn("function called", data);
+            setUserID(item._id);
+            setSavedName(item.name);
+            setSavedSector(item.dept);
             setSavedCheck(item.check);
-            //console.log("from function", data);   
+            console.log("from function", data);   
       }
       
+
+
+
+       //Updating a user and a sector
+       const handleUpdate = async () => {
+        // let updateItem = {name, dept, check, userid}
+        //console.log(updateItem);
+        await fetch(`http://localhost:5000/api/v1/updatePost/${userid}`, {
+          method: "PUT",
+          headers: {"Content-type": "application/json"},
+          body: JSON.stringify({
+            name: savedName,
+            dept: savedSector,
+            check: savedCheck,
+            userid
+          })
+        }).then((response)=> {
+           return response.json().then(res => {
+            console.log("updated Result: ", res);
+              if(res) {
+                window.location.reload();
+              }
+           })
+            
+          }).catch((err) => {
+          return err
+          console.log(err.message)
+        })
+        
+      }
+
+
        //Editing a user and a sector
       const handleEdit = (userid) => {
         setEditID(userid)
       }
 
-      //Updating a user and a sector
-      const handleUpdate = () => {
-        let updateItem = {savedName, savedSector, savedCheck}
-        // console.warn(updateItem);
-        fetch(`http://localhost:3700/allPosts/${userid}`, {
-          method: "PUT",
-          headers: {"Content-type": "application/json"},
-          body: JSON.stringify(updateItem)
-        }).then((response)=> {
-          response.json().then((result) => {
-            fetchSinglePost();
-            console.log("data: ",result);
-            if(result){
-              window.location.reload();
-            }
-          })
-        }).catch((error) => {
-          return error
-        })
-        
-      }
-
+     
 
       React.useEffect(() => {
         getData();
@@ -487,14 +498,14 @@
           <p>Please enter your name and pick the Sectors you are currently involved in.</p>
              
               <div className="input_items">
-                <label htmlFor="nameInput">Name:</label>
+                <label htmlFor="name">Name:</label>
                  <input 
                  type="text" 
-                 id="nameInput" 
-                 name="nameInput" 
-                 value={nameInput}
+                 id="name" 
+                 name="name" 
+                 value={name}
                  placeholder="Enter your Full Name..." 
-                 onChange={(e)=> setNameInput(e.target.value)}/> 
+                 onChange={(e)=> setName(e.target.value)}/> 
             </div>
           </div>
           <div className="sectors">
@@ -518,7 +529,7 @@
                             { sectItems.detail && sectItems.detail.map((childItems, index) => {
                                 return (
                                     <li className={`children ${childItems.dept.toLowerCase().startsWith(searchInput) ? 'block' : "hidden"}
-                                   ${ childItems.dept === selectedIndex ? "selectedItem" : ""}`} 
+                                   ${ childItems.dept === dept ? "selectedItem" : ""}`} 
                                   key={index} name={childItems.dept} 
                                 onClick={()=>handleSelect(childItems.dept)}>
                                {childItems.dept}
@@ -534,7 +545,7 @@
           </div>
               
                <div className="right_container">
-                { userid.id === editID ? (
+                { userid === editID ? (
                  <>
                   <form className="form_group">
                   
@@ -561,7 +572,7 @@
                             readOnly
                             /> 
                   </form>
-                  <button className="update_item" onClick={handleUpdate}>UPDATE</button>
+                  <button className="update_item" onClick={()=>handleUpdate(userid._id)}>UPDATE</button>
                     </> 
                     ) : (
                   
@@ -591,7 +602,7 @@
                             readOnly
                             /> 
                    </form>
-                      <button className="edit_item" onClick={()=>handleEdit(userid.id)}>EDIT</button>
+                      <button className="edit_item" onClick={()=>handleEdit(userid)}>EDIT</button>
                     </>
                     )}
                </div>

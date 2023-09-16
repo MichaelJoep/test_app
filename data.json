@@ -339,13 +339,7 @@
   ],
   "allPosts": [
     {
-      "nameInput": "Baal",
-      "check": true,
-      "selectedIndex": "Fish & Fish products",
-      "id": "1694189330754"
-    },
-    {
-      "nameInput": "Jane",
+      "nameInput": "Jane Mark",
       "check": true,
       "selectedIndex": "Fish & Fish products",
       "id": "1694189354393"
@@ -547,6 +541,24 @@
       "check": true,
       "selectedIndex": "Fish & Fish products",
       "id": "1694389347947"
+    },
+    {
+      "savedName": "Joseph John Chichi",
+      "savedSector": "Construction material",
+      "savedCheck": true,
+      "id": "1694501032321"
+    },
+    {
+      "savedName": "Joseph John Fred",
+      "savedSector": "Construction material",
+      "savedCheck": true,
+      "id": "1694502468245"
+    },
+    {
+      "nameInput": "Amaka Joseph",
+      "check": true,
+      "selectedIndex": "Construction material",
+      "id": "1694584545799"
     }
   ]
 }
