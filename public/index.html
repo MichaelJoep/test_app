@@ -339,11 +339,12 @@
       const [errors, setErrors] = React.useState("");
       const [editID, setEditID] = React.useState(-1);
      
-      
+      //baseURL = http://localhost:5000
+      const baseURL = "https://task-backend-vercel.vercel.app/api/v1"
       
       //fetch all sectors from database
       const getData = async () => {
-        await fetch('http://localhost:5000/api/v1/allSectors', {
+        await fetch(`${baseURL}/allSectors`, {
           method: 'GET',
           mode: "cors",
           headers: {'Content-type': 'application/json'},
@@ -392,9 +393,9 @@
         //POST data
         if(isValidated()){
           // const id = new Date().getTime().toString();
-        await fetch('http://localhost:5000/api/v1/posts', {
-           method: 'POST',
+         await fetch(`${baseURL}/posts`, {
            mode: "cors",
+           method: 'POST',
            headers: {'Content-type':'application/json'},
            body: JSON.stringify({
             name,
@@ -419,7 +420,7 @@
      
       //fetchSinglePost
       const fetchSinglePost = async () => {
-        await fetch(`http://localhost:5000/api/v1/getAllUsers`, {
+        await fetch(`${baseURL}/getAllUsers`, {
           method: "GET",
           mode: "cors",
           headers: {'Content-type': 'application/json'},
@@ -451,7 +452,7 @@
        //Updating a user and a sector
        const handleUpdate = async () => {
        
-        await fetch(`http://localhost:5000/api/v1/updatePost/${userid}`, {
+        await fetch(`${baseURL}/updatePost/${userid}`, {
           method: "PUT",
           mode: "cors",
           headers: {"Content-type": "application/json"},
