@@ -345,6 +345,7 @@
       const getData = async () => {
         await fetch('http://localhost:5000/api/v1/allSectors', {
           method: 'GET',
+          mode: "cors",
           headers: {'Content-type': 'application/json'},
         }).then((response) => {
             return response.json().then(data => {
@@ -392,7 +393,8 @@
         if(isValidated()){
           // const id = new Date().getTime().toString();
         await fetch('http://localhost:5000/api/v1/posts', {
-          method: 'POST',
+           method: 'POST',
+           mode: "cors",
            headers: {'Content-type':'application/json'},
            body: JSON.stringify({
             name,
@@ -419,6 +421,7 @@
       const fetchSinglePost = async () => {
         await fetch(`http://localhost:5000/api/v1/getAllUsers`, {
           method: "GET",
+          mode: "cors",
           headers: {'Content-type': 'application/json'},
         }).then((response)=> {
            return response.json().then(userData => {
@@ -450,6 +453,7 @@
        
         await fetch(`http://localhost:5000/api/v1/updatePost/${userid}`, {
           method: "PUT",
+          mode: "cors",
           headers: {"Content-type": "application/json"},
           body: JSON.stringify({
             name: savedName,
